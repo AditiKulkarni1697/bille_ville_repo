@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-
+require("dotenv").config();
 const { connection } = require("./db");
 const { userRouter } = require("./routes/user.routes");
 
@@ -13,12 +13,12 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRouter);
 
-app.listen(6060, async () => {
+app.listen(process.env.PORT, async () => {
   try {
     await connection;
     console.log("DB is connected to server");
   } catch (err) {
     console.log(err);
   }
-  console.log("Server is running at port 6060");
+  console.log(`Server is running at port ${process.env.PORT}`);
 });

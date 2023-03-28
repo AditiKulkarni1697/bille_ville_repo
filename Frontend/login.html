@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+  <style>
+    body{
+        background-color: black;
+        color: beige;
+    }
+  </style>
+  <body>
+    <div>
+    <form id="container">
+      <h1>SIGN IN</h1>
+      <p>Email Address</p>
+      <input type="text" id="email" />
+      <p>Password</p>
+      <input type="password" id="password" style="display: block;"/>
+      <input type="checkbox" onclick="showPass()"></input>Show Password
+      <input type="submit" value="SIGN IN" style="display: block;" />
+    </form>
+</div>
+    <div>
+    <h1>DON'T HAVE AN ACCOUNT?</h1>
+    <P>Create an account to check out faster and use our convenient site features</P>
+    <a href="signup.html">CREATE AN ACCOUNT</a>
+    </div>
+  </body>
+  <script>
+    //////////////////////to hide or show password////////////////
+
+    const password = document.getElementById("password")
+    function showPass(){
+       if(password.type=="password"){
+        password.type = "text"
+       }
+       else{
+        password.type = "password"
+       }
+       
+    }
+    ////////////////////fetch request to log in ///////////////////
+    const url = "http://localhost:6060/user/login";
+    function Login(e, p) {
+      (this.email = e), (this.password = p);
+    }
+    const form = document.getElementById("container");
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      const login = new Login(email, password);
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(login),
+      })
+        .then((res) => res.json())
+        .then((res) => {
+          console.log(res.token);
+          sessionStorage.setItem("key", res.token);
+          alert("Logged in successfully");
+          window.location.href = "notes.html";
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    });
+  </script>
+</html>

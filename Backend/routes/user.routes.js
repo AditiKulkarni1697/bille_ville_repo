@@ -20,7 +20,6 @@ userRouter.get("/", async (req, res) => {
 /////////////////sign up feature for users ////////////////////////////
 
 userRouter.post("/register", passwordRegulate, async (req, res) => {
-  console.log(req.body);
   const { first_name, last_name, email_address, password, date_of_birth } =
     req.body;
   bcrypt.hash(password, 8, async function (err, hash) {
@@ -43,10 +42,9 @@ userRouter.post("/register", passwordRegulate, async (req, res) => {
 ///////////////////Log in feature of users////////////////////////////
 
 userRouter.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-  console.log(req.body);
-  const user = await UserModel.find({ email_address: email });
-  console.log(user);
+  const { email_address, password } = req.body;
+
+  const user = await UserModel.find({ email_address: email_address });
 
   bcrypt.compare(password, user[0].password, function (err, result) {
     if (result) {

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <style>
+      /* #size {
+        display: grid;
+        grid-template-columns: (1fr 1fr 1fr);
+      } */
+      .card {
+        justify-content: center;
+        align-items: center;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- header -->
+    <header>
+      <!-- navbar -->
+      <nav class="navbar text-bg-dark p-3">
+        <div class="container-fluid" style="height: 100px">
+          <img src="C:\Users\Aditi Kulkarni\Downloads\B.png" width="80px" />
+          <form class="d-flex" role="search">
+            <img
+              src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPjxkZWZzPjxmaWx0ZXIgaWQ9ImRhcmtyZWFkZXItaW1hZ2UtZmlsdGVyIj48ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMC4yNDkgLTAuNjE0IC0wLjY3MiAwLjAwMCAxLjAzNSAtMC42NDYgMC4yODggLTAuNjY0IDAuMDAwIDEuMDIwIC0wLjYzNiAtMC42MDkgMC4yNTAgMC4wMDAgMC45OTQgMC4wMDAgMC4wMDAgMC4wMDAgMS4wMDAgMC4wMDAiIC8+PC9maWx0ZXI+PC9kZWZzPjxpbWFnZSB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbHRlcj0idXJsKCNkYXJrcmVhZGVyLWltYWdlLWZpbHRlcikiIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1qUWlJR2hsYVdkb2REMGlNalFpSUdacGJHdzlJbTV2Ym1VaUlIaHRiRzV6UFNKb2RIUndPaTh2ZDNkM0xuY3pMbTl5Wnk4eU1EQXdMM04yWnlJK1BIQmhkR2dnWkQwaVRUVWdNVEF1TjJFMUxqWWdOUzQySURBZ01EQTFMallnTlM0MklEVXVOaUExTGpZZ01DQXdNRE11TkMweExqSnNMalF0TGpJZ05DQTBZUzQwTGpRZ01DQXdNQzQxSURBZ0xqUXVOQ0F3SURBd01DMHVObXd0TkMwMElDNHpMUzR6WVRVdU55QTFMamNnTUNBd01ERXRNeTR6UVRVdU55QTFMamNnTUNBd01ERXdMallnTlNBMUxqWWdOUzQySURBZ01EQTFJREV3TGpkNmJTNDRJREJoTkM0NElEUXVPQ0F3SURBeE5DNDRMVFF1T1NBMExqZ2dOQzQ0SURBZ01ERTBMamNnTkM0NElEUXVPQ0EwTGpnZ01DQXdNUzAwTGpjZ05DNDRJRFF1T0NBMExqZ2dNQ0F3TVMwMExqZ3ROQzQ0ZWlJZ1ptbHNiRDBpSXpBd01DSXZQand2YzNablBnPT0iIC8+PC9zdmc+"
+              width="50px"
+            />
+            <input
+              class="form-control me-2"
+              type="search"
+              placeholder="Search"
+              aria-label="Search"
+              id="seach_button"
+            />
+
+            <!-- <button class="btn btn-outline-success" type="submit"> -->
+
+            <!-- </button> -->
+          </form>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <div class="card m-5">
+        <div class="row g-5">
+          <div class="col-md-4">
+            <img
+              class="img-fluid rounded-start"
+              alt="..."
+              id="image"
+              width="100%"
+            />
+          </div>
+          <div class="col-md-3">
+            <div class="card-body">
+              <h5 class="card-title" id="name"></h5>
+              <p class="card-text" id="details"></p>
+              <p class="card-text" id="rating">
+                <small class="text-body-secondary"></small>
+              </p>
+              <p class="card-text" id="price">
+                <small class="text-body-secondary"></small>
+              </p>
+              <p class="text-body-secondary">Choose a size</p>
+              <div class="card-text">
+                <div id="size">
+                  <div id="size0">0</div>
+                  <div id="size2">2</div>
+                  <div id="size4">4</div>
+                </div>
+              </div>
+              <div>
+                <button id="bag" class="btn btn-danger">Add to Bag</button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-5">
+            <div class="card-body">
+              <h5 class="card-title" id="name">SIZE & FIT</h5>
+              <ul class="card-text" id="details">
+                <li>
+                  Fits true to size, order your normal size Designed to hit at
+                  mid
+                </li>
+                calf
+                <li>
+                  Approx. 49.25" from back of neck to hem, based on a size small
+                </li>
+                <li>
+                  Model measurements: 5'10" height, 33.5" bust, 23.5" waist,
+                  34.5" hips, wearing a size small
+                </li>
+              </ul>
+              <h5>MATERIAL & CARE</h5>
+              <ul>
+                <li>96% viscose/4% elastane</li>
+                <li>Dry clean or machine wash</li>
+              </ul>
+              <h5>SHIPPING & RETURNS</h5>
+              <ul>
+                <li>Please call customer service for returns.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="text-center text-white" style="background-color: black">
+      <!-- Grid container -->
+      <div class="container text-center" style="margin: auto">
+        <!-- Section: Links -->
+        <section class="mt-5">
+          <!-- Grid row-->
+          <div class="row text-center d-flex justify-content-center pt-5">
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#!" class="text-white">About us</a>
+              </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#!" class="text-white">Products</a>
+              </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#!" class="text-white">Awards</a>
+              </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#!" class="text-white">Help</a>
+              </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#!" class="text-white">Contact</a>
+              </h6>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row-->
+        </section>
+        <!-- Section: Links -->
+
+        <hr class="my-5" />
+
+        <!-- Section: Text -->
+        <section class="mb-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+              <p>
+                Discover the ultimate online shopping experience with our
+                e-commerce website. Shop from the comfort of your own home and
+                browse through our vast selection of products from trusted
+                brands and sellers. With easy navigation and secure payment
+                options, we make online shopping a breeze. Start shopping today
+                and experience the convenience of our e-commerce website.
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- Section: Text -->
+
+        <!-- Section: Social -->
+        <section class="text-center mb-5">
+          <a href="" class="text-white me-4">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-github"></i>
+          </a>
+        </section>
+        <!-- Section: Social -->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">BilleVille.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    const id = sessionStorage.getItem("id");
+    
+    fetch(`http://localhost:6060/product/${id}`)
+      .then((res) => res.json())
+      .then((res) => {
+        
+        const image = document.getElementById("image");
+        image.setAttribute("src", res[0].image);
+        const name = document.getElementById("name");
+        name.innerHTML = res[0].name;
+        const details = document.getElementById("details");
+        details.innerHTML = res[0].details;
+        const rating = document.getElementById("rating");
+        rating.innerHTML = res[0].rating;
+        const price = document.getElementById("price");
+        price.innerHTML = res[0].price;
+        const bag = document.getElementById("bag");
+        bag.addEventListener("click", (e) => {
+          e.preventDefault();
+          const token = JSON.parse(sessionStorage.getItem("key"));
+          //console.log(token, "product frontend");
+          fetch("http://localhost:6060/cart/add", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: token, // add token obtained from login as header in post route
+            },
+            body: JSON.stringify(res[0]),
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              
+              window.location.href = "cart.html";
+            })
+            .catch((err) => console.log(err));
+        });
+        //////////////////////add reviews here, when reviews are created fron user account feed back form ///////////
+      });
+  </script>
+</html>

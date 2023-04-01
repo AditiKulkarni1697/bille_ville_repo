@@ -17,6 +17,17 @@ userRouter.get("/", async (req, res) => {
   }
 });
 
+userRouter.get("/:id", async (req, res) => {
+  //use it in backend
+  const id = req.params.id;
+  try {
+    const users = await UserModel.find({ _id: id });
+    res.status(200).send(users);
+  } catch (err) {
+    res.status(400).send({ msg: err });
+  }
+});
+
 /////////////////sign up feature for users ////////////////////////////
 
 userRouter.post("/register", passwordRegulate, async (req, res) => {

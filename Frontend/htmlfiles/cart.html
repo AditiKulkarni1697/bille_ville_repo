@@ -176,7 +176,7 @@
     })
       .then((res) => res.json())
       .then((res) => {
-       
+        console.log(res);
         const cont = document.getElementById("cont");
         const bill = document.getElementById("bill");
         /////////////////////items///////////////////////////
@@ -184,15 +184,21 @@
         container.className = "container text-center";
         let total = 0;
         let items = 0;
+        // sessionStorage.setItem("total", total)
         const row = document.createElement("div");
         row.className = "row row-cols-1 row-cols-sm-2 row-cols-md-4";
         ////////////////////individual item///////////////////////
         function display() {
           container.innerHTML = "";
           total = 0;
+          sessionStorage.setItem("total", total);
+
           items = 0;
+          sessionStorage.setItem("items", items);
+          sessionStorage.setItem("cart", JSON.stringify(res));
           res.forEach((ele) => {
             items++;
+            sessionStorage.setItem("items", items);
             const card = document.createElement("div");
             card.className = "card";
             card.style.width = "18rem";
@@ -209,10 +215,15 @@
             cardTitle.className = "card-title";
             cardTitle.innerHTML = ele.name;
 
+            const cardText1 = document.createElement("p");
+            cardText1.className = "card-text";
+            cardText1.innerHTML = ele.sizing;
+
             const cardText = document.createElement("p");
             cardText.className = "card-text";
             cardText.innerHTML = "INR" + " " + ele.price;
             total += ele.price;
+            sessionStorage.setItem("total", total);
             const btn = document.createElement("button");
             btn.className = "btn btn-danger";
             btn.innerHTML = "DELETE";
@@ -233,6 +244,7 @@
 
             cardBody.appendChild(cardTitle);
             cardBody.appendChild(cardText);
+            cardBody.appendChild(cardText1);
             cardBody.appendChild(btn);
 
             card.appendChild(img);
@@ -266,11 +278,12 @@
 
         const cardText1 = document.createElement("p");
         cardText1.className = "card-text";
-        cardText1.textContent = "Delivery Charges:" + " " + "FREE";
+        cardText1.textContent = "Discount:" + " " + "- INR 500";
 
         const cardTitle2 = document.createElement("h5");
         cardTitle2.className = "card-title";
-        cardTitle2.textContent = "Total:" + " " + "INR" + " " + (total + 25);
+        cardTitle2.textContent =
+          "Total:" + " " + "INR" + " " + (total + 25 - 500);
 
         const cardBack = document.createElement("a");
         cardBack.className = "btn btn-primary";
@@ -280,6 +293,9 @@
         const cardPay = document.createElement("button");
         cardPay.className = "btn btn-success";
         cardPay.innerHTML = "BUY";
+        cardPay.addEventListener("click", () => {
+          window.location.href = "payment.html";
+        });
 
         cardBody.appendChild(cardTitle);
         cardBody.appendChild(cardSubtitle);

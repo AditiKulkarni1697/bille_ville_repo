@@ -20,6 +20,7 @@ cartRouter.get("/", auth, async (req, res) => {
 });
 
 cartRouter.post("/add", auth, async (req, res) => {
+  console.log(req.body);
   const payload = req.body;
   const token = req.headers.authorization;
   const decoded = jwt.verify(token, "bruce");

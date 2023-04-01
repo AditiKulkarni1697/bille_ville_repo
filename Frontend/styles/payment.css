@@ -1,0 +1,193 @@
+
+body{
+    background-color: rgba(255, 255, 255, 0.791);
+    height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    
+ font-size: 16px;
+}
+#container{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    height: 2000px;
+}
+#express_checkout{
+    background-color: rgb(218, 197, 38);
+    border-radius: 5px;
+    box-sizing:content-box;
+}
+#express_checkout>p{
+    text-align: center;
+    padding-top: 15px;
+    padding-bottom: 10px;
+    
+    font-size: large;
+}
+#express_checkout>div{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    
+    height: 80px;
+   justify-content: space-between;
+   
+}
+#express_checkout>div>div{
+ width: 70%;
+ /* border: 1px solid black; */
+ text-align: center;
+ /* padding-top: 30px ; */
+ margin-left: 30px;
+}
+#express_checkout img{
+    width: 100%;
+    
+    height: 30px;
+    object-fit:contain;
+    padding: 7px 10px 7px 10px;
+    background-color: white;
+    border-radius: 5px;
+}
+#already_account img{
+    width: 30px;
+    object-fit:contain;
+}
+#already_account{
+    /* border: 1px solid black; */
+    display: grid;
+    grid-template-columns: 2.5fr 0.4fr 5fr ;
+    justify-content: space-around;
+    padding: 15px;
+    margin: 10px 0px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+}   
+#already_account>div{
+    /* border: 1px solid black; */
+    text-align: left;
+    display: grid;
+    justify-content: left;
+    align-items: center;
+    padding: 0px;
+    font-family: Arial, Helvetica, sans-serif;
+
+}
+#shipping_address_div{
+    /* margin-left: 14%; */
+    text-align: center;
+    width: 92%;
+}
+#contact_details{
+    width: 100%;
+    text-align: center;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    padding: 30px;
+    
+}
+#contact_details input, #contact_details select{
+ padding: 20px;
+ width: 100%;
+ color: gray;
+ font-size: 16px;
+}
+
+#state_div{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px;
+}
+#contact_details>div{
+    
+    width: 80%;
+    margin: 5px 50px;
+}
+#contact_details>input{
+    
+    border-color: gray;
+}
+#contact_details>div:nth-child(1)>input{
+    border-radius: 10px 10px 0px 0px;
+    border: 1px solid gray;
+}
+#contact_details>div:nth-child(8)>input{
+    border-radius: 0px 0px 10px 10px;
+    border: 1px solid gray;
+}
+#checkbox>input{
+    margin-top: 5px;
+    font-size: 8px;
+    
+}
+#plans{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 15px;
+    margin-left: 12% 
+}
+#plans>div{
+    border: 1px solid grey;
+    width: 80%;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+#payment_detail{
+    width: 100%;
+    padding: 20px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
+    /* padding: 30px; */
+}
+#payment_cards_type{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    width: 40%;
+    gap:1px;
+}
+
+#payment_detail>div>div>div>img{
+    width: 70px;
+    padding: 10px;
+}
+.amazon_pay_div{
+   display: grid;
+   grid-template-columns:  1fr 1fr 22fr;
+   justify-content: left;
+   align-items: center;
+}
+#card_payment input{
+    padding: 15px;
+    margin: 2px;
+    color: gray;
+    font-size: 16px;
+}
+#card_Number{
+    width: 54%
+    ;
+}
+#bill_details{
+    margin-left: 20px;
+    position: sticky;
+    top: 0px;
+    height: 800px;
+    text-align: center;
+}
+.total_table{
+   width: 80%;
+   margin: auto;
+   line-height: 1cm;
+   border: 1px solid grey;
+   padding: 20px;
+}
+
+#order_total{
+ font-weight: bold;
+}
+#submit{
+    padding: 10px;
+    margin: 10px;
+    background-color: rgba(255, 0, 0, 0.752);
+    color: aliceblue;
+    border: none;
+}
+
+  

@@ -73,9 +73,9 @@
               <p class="text-body-secondary">Choose a size</p>
               <div class="card-text">
                 <div id="size">
-                  <div id="size0">0</div>
-                  <div id="size2">2</div>
-                  <div id="size4">4</div>
+                  <div><a id="size0" href="#">0</a></div>
+                  <div><a id="size2" href="#">2</a></div>
+                  <div><a id="size4" href="#">4</a></div>
                 </div>
               </div>
               <div>
@@ -225,11 +225,10 @@
   ></script>
   <script>
     const id = sessionStorage.getItem("id");
-    
+    const token = JSON.parse(sessionStorage.getItem("key"));
     fetch(`http://localhost:6060/product/${id}`)
       .then((res) => res.json())
       .then((res) => {
-        
         const image = document.getElementById("image");
         image.setAttribute("src", res[0].image);
         const name = document.getElementById("name");
@@ -240,11 +239,110 @@
         rating.innerHTML = res[0].rating;
         const price = document.getElementById("price");
         price.innerHTML = res[0].price;
+        const size0 = document.getElementById("size0");
+        if (res[0].sizing[0] > 0) {
+          size0.innerHTML = "Size0 : In Stock";
+          size0.setAttribute("style", "color:green");
+          size0.addEventListener("click", (e) => {
+            const product = {
+              sizing: {
+                0: res[0].sizing[0] - 1,
+                2: res[0].sizing[2],
+                4: res[0].sizing[4],
+              },
+            };
+            fetch(`http://localhost:6060/product/update/${res[0]._id}`, {
+              method: "PATCH",
+              headers: {
+                "content-type": "application/json",
+                authorization: token,
+              },
+              body: JSON.stringify(product),
+            })
+              .then((res) => res.json())
+              .then((res) => {
+                sessionStorage.setItem("size", "size0");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+        } else {
+          size0.innerHTML = "Size0: Out of Stock";
+          size0.setAttribute("style", "color:red");
+        }
+
+        const size2 = document.getElementById("size2");
+        if (res[0].sizing[2] > 0) {
+          size2.innerHTML = "Size2 : In Stock";
+          size2.setAttribute("style", "color:green");
+          size2.addEventListener("click", (e) => {
+            const product = {
+              sizing: {
+                0: res[0].sizing[0],
+                2: res[0].sizing[2] - 1,
+                4: res[0].sizing[4],
+              },
+            };
+            fetch(`http://localhost:6060/product/update/${res[0]._id}`, {
+              method: "PATCH",
+              headers: {
+                "content-type": "application/json",
+                authorization: token,
+              },
+              body: JSON.stringify(product),
+            })
+              .then((res) => res.json())
+              .then((res) => {
+                sessionStorage.setItem("size", "size2");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+        } else {
+          size2.innerHTML = "Size2: Out of Stock";
+          size2.setAttribute("style", "color:red");
+        }
+        const size4 = document.getElementById("size4");
+        if (res[0].sizing[4] > 0) {
+          size4.innerHTML = "Size4 : In Stock";
+          size4.setAttribute("style", "color:green");
+          size4.addEventListener("click", (e) => {
+            const product = {
+              sizing: {
+                0: res[0].sizing[0],
+                2: res[0].sizing[2],
+                4: res[0].sizing[4] - 1,
+              },
+            };
+            fetch(`http://localhost:6060/product/update/${res[0]._id}`, {
+              method: "PATCH",
+              headers: {
+                "content-type": "application/json",
+                authorization: token,
+              },
+              body: JSON.stringify(product),
+            })
+              .then((res) => res.json())
+              .then((res) => {
+                sessionStorage.setItem("size", "size0");
+              })
+              .catch((err) => {
+                console.log(err);
+              });
+          });
+        } else {
+          size4.innerHTML = "Size4: Out of Stock";
+          size4.setAttribute("style", "color:red");
+        }
         const bag = document.getElementById("bag");
         bag.addEventListener("click", (e) => {
           e.preventDefault();
           const token = JSON.parse(sessionStorage.getItem("key"));
           //console.log(token, "product frontend");
+          const size = sessionStorage.getItem("size");
+          res[0].sizing = size;
           fetch("http://localhost:6060/cart/add", {
             method: "POST",
             headers: {
@@ -255,7 +353,6 @@
           })
             .then((res) => res.json())
             .then((res) => {
-              
               window.location.href = "cart.html";
             })
             .catch((err) => console.log(err));

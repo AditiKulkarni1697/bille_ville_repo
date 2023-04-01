@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="gateway.css" />
+    <script src="gateway.js" defer></script>
+    <style>
+      #container {
+        display: grid;
+        grid-template-columns: 2fr 4fr;
+      }
+      #container > div:nth-child(2) {
+        text-align: center;
+      }
+      button {
+        padding: 10px;
+        margin: 10px;
+        background-color: rgb(98, 143, 241);
+        color: aliceblue;
+        border: none;
+        width: 80%;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h2>VISA</h2>
+      <hr />
+      <div id="container">
+        <div id="Merchant_Details"></div>
+        <div id="otp"></div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let cardDetails = JSON.parse(localStorage.getItem("card")) || [];
+
+    let Merchant_Details = document.getElementById("Merchant_Details");
+    let otp = document.getElementById("otp");
+
+    const generateOTP = (length = 6) => {
+      let otp = "";
+
+      for (let i = 0; i < length; i++) {
+        otp += Math.floor(Math.random() * 10);
+      }
+
+      return otp;
+    };
+    let otp_generated = generateOTP(6);
+    console.log(otp_generated);
+    Merchant_Details.innerHTML = `
+ <h3>Merchant Details</h3>
+ <div>
+<table>
+<tr>
+<td>Merchant Name</td>
+<td>WWW APNIDUKAN IN</td>
+</tr>
+<tr>
+<td>Date</td>
+<td>Jaan 23, 2023</td>
+</tr>
+<tr>
+<td>Card Number</td>
+<td>${cardDetails[cardDetails.length - 3]}</td>
+</tr>
+<tr>
+<td>Amount</td>
+<td>Rs.${cardDetails[cardDetails.length - 2]}</td>
+</tr>
+</table>
+ </div>
+ 
+ 
+ `;
+    console.log(cardDetails[cardDetails.length - 2]);
+    otp.innerHTML = `
+ <h3>Authenticate Transaction</h3>
+ <form action="https://formsubmit.co/aditisujlegaonkar@gmail.com" method="POST">
+ <input type="email" name="Email" value="aditisujlegaonkar@gmail.com" style="display:none" required> 
+ 
+ <input type="password" name="password" value=${otp_generated} style="display:none" required>
+     <button type="submit" onclick=alert("OTP sent successfully")>OTP</button>
+</form>
+ 
+<div>
+ <div id="info_otp">
+ <p>Your OTP was successfully sent to your registered mobile number XXXXXX5710 and Email Address<br>adXXXXXXXXXX@gmail.com</p>
+ </div>
+ <div >
+ <input type="password" id="passwordid" placeholder="XXXXXX">
+ </div>
+ <button onclick=otpGenerate()>Submit</button>
+</div>
+ `;
+    let submited = document.getElementById("submit");
+    let passwordr = document.getElementById("passwordid");
+    const token = JSON.parse(sessionStorage.getItem("key"));
+    const cart = JSON.parse(sessionStorage.getItem("cart"));
+    function otpGenerate() {
+      console.log(passwordr.value);
+      if (passwordr.value == otp_generated) {
+        alert("Your Order is Placed,Thank you for shopping with ApniDukan");
+        cart.forEach((ele) => {
+          ele.estimated_Delivery = "Tommorrow";
+          fetch("http://localhost:6060/order/add", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+              authorization: token,
+            },
+            body: JSON.stringify(ele),
+          })
+            .then((res) => res.json())
+            .then((res) => {
+              console.log(res);
+            })
+            .catch((err) => console.log(err));
+        });
+      } else {
+        alert("Wrong credentials");
+      }
+    }
+  </script>
+</html>

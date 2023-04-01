@@ -72,7 +72,13 @@
         overflow: hidden;
         width: 95vw;
       }
+      .name {
+        color: black;
+      }
 
+      .btn {
+        margin: 0px 3px 0px 3px;
+      }
       /* .two_brands{
         display: flex;
         justify-content: center;
@@ -89,7 +95,7 @@
         <div class="container-fluid" style="height: 100px">
           <img src="C:\Users\Aditi Kulkarni\Downloads\B.png" width="80px" />
           <form class="d-flex" role="search">
-            <img
+            <!-- <img
               src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB3aWR0aD0iMjQiIGhlaWdodD0iMjQiPjxkZWZzPjxmaWx0ZXIgaWQ9ImRhcmtyZWFkZXItaW1hZ2UtZmlsdGVyIj48ZmVDb2xvck1hdHJpeCB0eXBlPSJtYXRyaXgiIHZhbHVlcz0iMC4yNDkgLTAuNjE0IC0wLjY3MiAwLjAwMCAxLjAzNSAtMC42NDYgMC4yODggLTAuNjY0IDAuMDAwIDEuMDIwIC0wLjYzNiAtMC42MDkgMC4yNTAgMC4wMDAgMC45OTQgMC4wMDAgMC4wMDAgMC4wMDAgMS4wMDAgMC4wMDAiIC8+PC9maWx0ZXI+PC9kZWZzPjxpbWFnZSB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIGZpbHRlcj0idXJsKCNkYXJrcmVhZGVyLWltYWdlLWZpbHRlcikiIHhsaW5rOmhyZWY9ImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjNhV1IwYUQwaU1qUWlJR2hsYVdkb2REMGlNalFpSUdacGJHdzlJbTV2Ym1VaUlIaHRiRzV6UFNKb2RIUndPaTh2ZDNkM0xuY3pMbTl5Wnk4eU1EQXdMM04yWnlJK1BIQmhkR2dnWkQwaVRUVWdNVEF1TjJFMUxqWWdOUzQySURBZ01EQTFMallnTlM0MklEVXVOaUExTGpZZ01DQXdNRE11TkMweExqSnNMalF0TGpJZ05DQTBZUzQwTGpRZ01DQXdNQzQxSURBZ0xqUXVOQ0F3SURBd01DMHVObXd0TkMwMElDNHpMUzR6WVRVdU55QTFMamNnTUNBd01ERXRNeTR6UVRVdU55QTFMamNnTUNBd01ERXdMallnTlNBMUxqWWdOUzQySURBZ01EQTFJREV3TGpkNmJTNDRJREJoTkM0NElEUXVPQ0F3SURBeE5DNDRMVFF1T1NBMExqZ2dOQzQ0SURBZ01ERTBMamNnTkM0NElEUXVPQ0EwTGpnZ01DQXdNUzAwTGpjZ05DNDRJRFF1T0NBMExqZ2dNQ0F3TVMwMExqZ3ROQzQ0ZWlJZ1ptbHNiRDBpSXpBd01DSXZQand2YzNablBnPT0iIC8+PC9zdmc+"
               width="50px"
             />
@@ -99,11 +105,11 @@
               placeholder="Search"
               aria-label="Search"
               id="seach_button"
-            />
-
-            <!-- <button class="btn btn-outline-success" type="submit"> -->
-
-            <!-- </button> -->
+            /> -->
+            <a class="btn btn-secondary" href="./login.html">Login</a>
+            <a class="btn btn-secondary" href="./signup.html">SignUp</a>
+            <a class="btn btn-secondary" href="./cart.html">Cart</a>
+            <a class="btn btn-secondary" href="./userAccount.html">Account</a>
           </form>
         </div>
       </nav>
@@ -379,6 +385,7 @@
           const name = document.createElement("a");
           name.innerHTML = ele.name;
           name.setAttribute("href", "product.html");
+          name.setAttribute("class", "name");
           name.addEventListener("click", (e) => {
             sessionStorage.setItem("id", ele._id);
           });

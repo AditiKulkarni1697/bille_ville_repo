@@ -15,7 +15,7 @@ orderRouter.get("/", async (req, res) => {
 orderRouter.get("/:id", async (req, res) => {
   const id = req.params.id;
   try {
-    const posts = await OrderModel.find({ _id: id });
+    const posts = await OrderModel.find({ userID: id });
     res.status(200).send(posts);
   } catch (err) {
     res.status(400).send(err);

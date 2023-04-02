@@ -106,10 +106,12 @@
               aria-label="Search"
               id="seach_button"
             /> -->
+            <h4 id="userName"></h4>
             <a class="btn btn-secondary" href="./login.html">Login</a>
             <a class="btn btn-secondary" href="./signup.html">SignUp</a>
             <a class="btn btn-secondary" href="./cart.html">Cart</a>
             <a class="btn btn-secondary" href="./userAccount.html">Account</a>
+            <button id="logout" class="btn btn-secondary">LogOut</button>
           </form>
         </div>
       </nav>
@@ -373,6 +375,30 @@
   </script>
   <script>
     const card_div = document.querySelectorAll(".card_div");
+    const userName = document.getElementById("userName");
+    const userID = JSON.parse(sessionStorage.getItem("userID"));
+    const logout = document.getElementById("logout");
+    const token = JSON.parse(sessionStorage.getItem("key"));
+    
+    logout.addEventListener("click", (e) => {
+      fetch(`http://localhost:6060/blacklist/add`, {
+              method: "POST",
+              headers: {
+                "content-type": "application/json",
+                authorization: token,
+              },
+              body: JSON.stringify(token),
+            })
+    });
+    fetch(`http://localhost:6060/user/${userID}`)
+      .then((res) => res.json())
+      .then((res) => {
+        userName.innerHTML = `Hi,${res[0].first_name}` + " ";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
     fetch("http://localhost:6060/product")
       .then((res) => res.json())
       .then((res) => {

@@ -5,15 +5,329 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        width: 95vw;
+        margin: auto;
+      }
+      header,
+      main,
+      footer {
+        margin-top: 28px;
+        width: 100%;
+      }
+      main {
+        margin: 50px;
+      }
+      main > div {
+        margin-bottom: 30px;
+        width: 70%;
+      }
+      table {
+        border: 1px solid rgba(0, 0, 0, 0.158);
+      }
+      td,
+      th {
+        border: 1px solid rgba(0, 0, 0, 0.158);
+
+        text-align: center;
+        padding: 20px;
+        margin: auto;
+      }
+      table > p {
+        padding: 4px;
+      }
+      .btn {
+        color: white;
+      }
+    </style>
   </head>
   <body>
-    <header></header>
+    <!-- header -->
+    <header>
+      <!-- navbar -->
+      <nav class="navbar text-bg-dark p-3">
+        <div class="container-fluid" style="height: 100px">
+          <img src="C:\Users\Aditi Kulkarni\Downloads\B.png" width="80px" />
+          <form class="d-flex" role="search">
+            <h4 id="userName"></h4>
+            <!-- <a class="btn btn-secondary" href="./login.html">Login</a>
+            <a class="btn btn-secondary" href="./signup.html">SignUp</a> -->
+            <a class="btn btn-secondary" href="./cart.html">Cart</a>
+            <a class="btn btn-secondary" href="./homepage.html">HomePage</a>
+            <!-- <button class="btn btn-outline-success" type="submit"> -->
+
+            <!-- </button> -->
+          </form>
+        </div>
+      </nav>
+    </header>
     <main>
-      userDetails
+      <h4>My Details</h4>
       <div id="userDetails"></div>
+      <h4>My Cart</h4>
       <div id="cart"></div>
+      <h4>My Orders</h4>
       <div id="orders"></div>
     </main>
-    <footer></footer>
+    <!-- Footer -->
+    <footer class="text-center text-white" style="background-color: black">
+      <!-- Grid container -->
+      <div class="container text-center" style="margin: auto">
+        <!-- Section: Links -->
+        <section class="mt-5">
+          <!-- Grid row-->
+          <div class="row text-center d-flex justify-content-center pt-5">
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#!" class="text-white">About us</a>
+              </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#!" class="text-white">Products</a>
+              </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#!" class="text-white">Awards</a>
+              </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#!" class="text-white">Help</a>
+              </h6>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-2">
+              <h6 class="text-uppercase font-weight-bold">
+                <a href="#!" class="text-white">Contact</a>
+              </h6>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row-->
+        </section>
+        <!-- Section: Links -->
+
+        <hr class="my-5" />
+
+        <!-- Section: Text -->
+        <section class="mb-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-lg-8">
+              <p>
+                Discover the ultimate online shopping experience with our
+                e-commerce website. Shop from the comfort of your own home and
+                browse through our vast selection of products from trusted
+                brands and sellers. With easy navigation and secure payment
+                options, we make online shopping a breeze. Start shopping today
+                and experience the convenience of our e-commerce website.
+              </p>
+            </div>
+          </div>
+        </section>
+        <!-- Section: Text -->
+
+        <!-- Section: Social -->
+        <section class="text-center mb-5">
+          <a href="" class="text-white me-4">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="" class="text-white me-4">
+            <i class="fab fa-github"></i>
+          </a>
+        </section>
+        <!-- Section: Social -->
+      </div>
+      <!-- Grid container -->
+
+      <!-- Copyright -->
+      <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2)">
+        © 2020 Copyright:
+        <a class="text-white" href="https://mdbootstrap.com/">BilleVille.com</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
   </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+    crossorigin="anonymous"
+  ></script>
+  <script>
+    // userDetails
+    const token = JSON.parse(sessionStorage.getItem("key"));
+    const userID = JSON.parse(sessionStorage.getItem("userID"));
+
+    fetch(`http:localhost:6060/user/${userID}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: token,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        res.forEach((ele) => {
+          console.log(ele);
+          const userDetails = document.getElementById("userDetails");
+          // Create a div element
+          const div = document.createElement("div");
+
+          // Add the 'card' class to the div element
+          div.classList.add("card");
+
+          // Set the 'width' style of the div element to '18rem'
+          div.style.width = "18rem";
+
+          // Create a ul element
+          const ul = document.createElement("ul");
+
+          // Add the 'list-group' and 'list-group-flush' classes to the ul element
+          ul.classList.add("list-group", "list-group-flush");
+
+          // Create three li elements and add them to the ul element
+          const li1 = document.createElement("li");
+          li1.classList.add("list-group-item");
+          li1.textContent =
+            "Name:" + " " + ele.first_name + " " + ele.last_name;
+          ul.appendChild(li1);
+
+          const li2 = document.createElement("li");
+          li2.classList.add("list-group-item");
+          li2.textContent = "Email Address:" + " " + ele.email_address;
+          ul.appendChild(li2);
+
+          const li3 = document.createElement("li");
+          li3.classList.add("list-group-item");
+          li3.textContent = "Date Of Birth:" + " " + ele.date_of_birth;
+          ul.appendChild(li3);
+
+          // Add the ul element to the div element
+          div.appendChild(ul);
+          userDetails.appendChild(div);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    ///////////////////////////cart//////////////////////////
+    fetch(`http://localhost:6060/cart`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: token,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        const cart = document.getElementById("cart");
+
+        res.forEach((ele) => {
+          const product = document.createElement("div");
+          product.innerHTML = `
+          <table >
+            <thead>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Sizing</th>
+              <th>Cart</th>
+              </thead>
+              <tbody>
+              <tr>
+      <td><img src=${ele.image} class="card-img-top" alt="..." style="width:50px"></td>
+
+      
+       <td> <p class="card-title">${ele.name}</p></td>
+      <td>  <p class="card-title"> INR ${ele.price}</p></td>
+      <td>  <p class="card-title"> ${ele.sizing}</p></td>
+      <td>  <a class="card-title btn btn-danger" href="cart.html">Visit Cart</a></td>
+        
+      
+    </tr>
+    </tbody>
+    </table>`;
+          cart.append(product);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    /////////////////////////////orders//////////////////////
+    fetch(`http://localhost:6060/order/${userID}`, {
+      method: "GET",
+      headers: {
+        "content-type": "application/json",
+        authorization: token,
+      },
+    })
+      .then((res) => res.json())
+      .then((res) => {
+        console.log(res);
+        const orders = document.getElementById("orders");
+
+        res.forEach((ele) => {
+          const product = document.createElement("div");
+          product.innerHTML = `
+          <table >
+            <thead>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Estimated Delivery</th>
+              <th>Sizing</th>
+              </thead>
+              <tbody>
+              <tr>
+      <td><img src=${ele.image} class="card-img-top" alt="..." style="width:50px"></td>
+
+      
+       <td> <p class="card-title">${ele.name}</p></td>
+      <td>  <p class="card-title"> ${ele.estimated_Delivery}</p></td>
+      <td>  <p class="card-title"> ${ele.sizing}</p></td>
+        
+        
+      
+    </tr>
+    </tbody>
+    </table>`;
+          orders.append(product);
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  </script>
 </html>

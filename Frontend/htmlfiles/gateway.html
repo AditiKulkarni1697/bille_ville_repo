@@ -53,50 +53,50 @@
     let otp_generated = generateOTP(6);
     console.log(otp_generated);
     Merchant_Details.innerHTML = `
- <h3>Merchant Details</h3>
- <div>
-<table>
-<tr>
-<td>Merchant Name</td>
-<td>WWW APNIDUKAN IN</td>
-</tr>
-<tr>
-<td>Date</td>
-<td>Jaan 23, 2023</td>
-</tr>
-<tr>
-<td>Card Number</td>
-<td>${cardDetails[cardDetails.length - 3]}</td>
-</tr>
-<tr>
-<td>Amount</td>
-<td>Rs.${cardDetails[cardDetails.length - 2]}</td>
-</tr>
-</table>
- </div>
- 
- 
- `;
+     <h3>Merchant Details</h3>
+     <div>
+    <table>
+    <tr>
+    <td>Merchant Name</td>
+    <td>WWW APNIDUKAN IN</td>
+    </tr>
+    <tr>
+    <td>Date</td>
+    <td>Jaan 23, 2023</td>
+    </tr>
+    <tr>
+    <td>Card Number</td>
+    <td>${cardDetails[cardDetails.length - 3]}</td>
+    </tr>
+    <tr>
+    <td>Amount</td>
+    <td>Rs.${cardDetails[cardDetails.length - 2]}</td>
+    </tr>
+    </table>
+     </div>
+
+
+     `;
     console.log(cardDetails[cardDetails.length - 2]);
     otp.innerHTML = `
- <h3>Authenticate Transaction</h3>
- <form action="https://formsubmit.co/aditisujlegaonkar@gmail.com" method="POST">
- <input type="email" name="Email" value="aditisujlegaonkar@gmail.com" style="display:none" required> 
- 
- <input type="password" name="password" value=${otp_generated} style="display:none" required>
-     <button type="submit" onclick=alert("OTP sent successfully")>OTP</button>
-</form>
- 
-<div>
- <div id="info_otp">
- <p>Your OTP was successfully sent to your registered mobile number XXXXXX5710 and Email Address<br>adXXXXXXXXXX@gmail.com</p>
- </div>
- <div >
- <input type="password" id="passwordid" placeholder="XXXXXX">
- </div>
- <button onclick=otpGenerate()>Submit</button>
-</div>
- `;
+     <h3>Authenticate Transaction</h3>
+     <form action="https://formsubmit.co/aditisujlegaonkar@gmail.com" method="POST">
+     <input type="email" name="Email" value="aditisujlegaonkar@gmail.com" style="display:none" required>
+
+     <input type="password" name="password" value=${otp_generated} style="display:none" required>
+         <button type="submit" onclick=alert("OTP sent successfully")>OTP</button>
+    </form>
+
+    <div>
+     <div id="info_otp">
+     <p>Your OTP was successfully sent to your registered mobile number XXXXXX5710 and Email Address<br>adXXXXXXXXXX@gmail.com</p>
+     </div>
+     <div >
+     <input type="password" id="passwordid" placeholder="XXXXXX">
+     </div>
+     <button onclick=otpGenerate()>Submit</button>
+    </div>
+     `;
     let submited = document.getElementById("submit");
     let passwordr = document.getElementById("passwordid");
     const token = JSON.parse(sessionStorage.getItem("key"));
@@ -104,7 +104,7 @@
     function otpGenerate() {
       console.log(passwordr.value);
       if (passwordr.value == otp_generated) {
-        alert("Your Order is Placed,Thank you for shopping with ApniDukan");
+        // alert("Your Order is Placed,Thank you for shopping with ApniDukan");
         cart.forEach((ele) => {
           ele.estimated_Delivery = "Tommorrow";
           fetch("http://localhost:6060/order/add", {
@@ -117,7 +117,23 @@
           })
             .then((res) => res.json())
             .then((res) => {
-              console.log(res);
+              console.log(ele._id);
+              fetch(`http://localhost:6060/cart/delete/${ele._id}`, {
+                method: "DELETE",
+                headers: {
+                  "content-type": "application/json",
+                  authorization: token,
+                },
+              })
+                .then((res) => res.json())
+                .then((res) => {
+                  console.log(res);
+                  alert("Your Order is placed");
+                  window.location.href = "userAccount.html";
+                })
+                .catch((err) => {
+                  console.log(err);
+                });
             })
             .catch((err) => console.log(err));
         });

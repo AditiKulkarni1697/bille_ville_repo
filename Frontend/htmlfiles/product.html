@@ -223,7 +223,7 @@
     const token = JSON.parse(sessionStorage.getItem("key"));
     const userName = document.getElementById("userName");
     const userID = JSON.parse(sessionStorage.getItem("userID"));
-    fetch(`http://localhost:6060/user/${userID}`)
+    fetch(`https://angry-ant-sweatpants.cyclic.app/user/${userID}`)
       .then((res) => res.json())
       .then((res) => {
         userName.innerHTML = `Hi,${res[0].first_name}` + " ";
@@ -231,7 +231,7 @@
       .catch((err) => {
         console.log(err);
       });
-    fetch(`http://localhost:6060/product/${id}`)
+    fetch(`https://angry-ant-sweatpants.cyclic.app/product/${id}`)
       .then((res) => res.json())
       .then((res) => {
         const image = document.getElementById("image");
@@ -256,7 +256,7 @@
                 4: res[0].sizing[4],
               },
             };
-            fetch(`http://localhost:6060/product/update/${res[0]._id}`, {
+            fetch(`https://angry-ant-sweatpants.cyclic.app/product/update/${res[0]._id}`, {
               method: "PATCH",
               headers: {
                 "content-type": "application/json",
@@ -289,7 +289,7 @@
                 4: res[0].sizing[4],
               },
             };
-            fetch(`http://localhost:6060/product/update/${res[0]._id}`, {
+            fetch(`https://angry-ant-sweatpants.cyclic.app/product/update/${res[0]._id}`, {
               method: "PATCH",
               headers: {
                 "content-type": "application/json",
@@ -321,7 +321,7 @@
                 4: res[0].sizing[4] - 1,
               },
             };
-            fetch(`http://localhost:6060/product/update/${res[0]._id}`, {
+            fetch(`https://angry-ant-sweatpants.cyclic.app/product/update/${res[0]._id}`, {
               method: "PATCH",
               headers: {
                 "content-type": "application/json",
@@ -348,7 +348,7 @@
           //console.log(token, "product frontend");
           const size = sessionStorage.getItem("size");
           res[0].sizing = size;
-          fetch("http://localhost:6060/cart/add", {
+          fetch("https://angry-ant-sweatpants.cyclic.app/cart/add", {
             method: "POST",
             headers: {
               "content-type": "application/json",

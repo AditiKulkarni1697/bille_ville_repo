@@ -381,7 +381,7 @@
     const token = JSON.parse(sessionStorage.getItem("key"));
     
     logout.addEventListener("click", (e) => {
-      fetch(`http://localhost:6060/blacklist/add`, {
+      fetch(`https://angry-ant-sweatpants.cyclic.app/blacklist/add`, {
               method: "POST",
               headers: {
                 "content-type": "application/json",
@@ -390,7 +390,7 @@
               body: JSON.stringify(token),
             })
     });
-    fetch(`http://localhost:6060/user/${userID}`)
+    fetch(`https://angry-ant-sweatpants.cyclic.app/user/${userID}`)
       .then((res) => res.json())
       .then((res) => {
         userName.innerHTML = `Hi,${res[0].first_name}` + " ";
@@ -399,7 +399,7 @@
         console.log(err);
       });
 
-    fetch("http://localhost:6060/product")
+    fetch("https://angry-ant-sweatpants.cyclic.app/product")
       .then((res) => res.json())
       .then((res) => {
         let index = 0;

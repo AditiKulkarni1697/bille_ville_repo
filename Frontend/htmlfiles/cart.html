@@ -162,7 +162,7 @@
     const token = JSON.parse(sessionStorage.getItem("key"));
     const userName = document.getElementById("userName");
     const userID = JSON.parse(sessionStorage.getItem("userID"));
-    fetch(`https://angry-ant-sweatpants.cyclic.app/${userID}`)
+    fetch(`https://bille-ville-backend.onrender.com/${userID}`)
       .then((res) => res.json())
       .then((res) => {
         userName.innerHTML = `Hi,${res[0].first_name}` + " ";
@@ -170,7 +170,7 @@
       .catch((err) => {
         console.log(err);
       });
-    fetch("https://angry-ant-sweatpants.cyclic.app/cart", {
+    fetch("https://bille-ville-backend.onrender.com/cart", {
       method: "GET",
       headers: {
         authorization: token,
@@ -231,7 +231,7 @@
             btn.innerHTML = "DELETE";
             btn.addEventListener("click", (e) => {
               e.preventDefault();
-              fetch(`https://angry-ant-sweatpants.cyclic.app/${ele._id}`, {
+              fetch(`https://bille-ville-backend.onrender.com/${ele._id}`, {
                 method: "DELETE",
                 headers: {
                   authorization: token,

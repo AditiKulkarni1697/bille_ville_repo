@@ -190,7 +190,7 @@
     const token = JSON.parse(sessionStorage.getItem("key"));
     const userID = JSON.parse(sessionStorage.getItem("userID"));
 
-    fetch(`https://angry-ant-sweatpants.cyclic.app/user/${userID}`, {
+    fetch(`https://bille-ville-backend.onrender.com/user/${userID}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -243,7 +243,7 @@
         console.log(err);
       });
     ///////////////////////////cart//////////////////////////
-    fetch(`https://angry-ant-sweatpants.cyclic.app/cart`, {
+    fetch(`https://bille-ville-backend.onrender.com/cart`, {
       method: "GET",
       headers: {
         "content-type": "application/json",
@@ -287,7 +287,7 @@
         console.log(err);
       });
     /////////////////////////////orders//////////////////////
-    fetch(`https://angry-ant-sweatpants.cyclic.app/order/${userID}`, {
+    fetch(`https://bille-ville-backend.onrender.com/order/${userID}`, {
       method: "GET",
       headers: {
         "content-type": "application/json",

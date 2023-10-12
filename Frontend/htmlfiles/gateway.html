@@ -107,7 +107,7 @@
         // alert("Your Order is Placed,Thank you for shopping with ApniDukan");
         cart.forEach((ele) => {
           ele.estimated_Delivery = "Tommorrow";
-          fetch("https://angry-ant-sweatpants.cyclic.app/order/add", {
+          fetch("https://bille-ville-backend.onrender.com/order/add", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -118,7 +118,7 @@
             .then((res) => res.json())
             .then((res) => {
               console.log(ele._id);
-              fetch(`https://angry-ant-sweatpants.cyclic.app/cart/delete/${ele._id}`, {
+              fetch(`https://bille-ville-backend.onrender.com/cart/delete/${ele._id}`, {
                 method: "DELETE",
                 headers: {
                   "content-type": "application/json",

@@ -8,7 +8,7 @@ productRouter.get("/", async (req, res) => {
     const posts = await ProductModel.find();
     res.status(200).send(posts);
   } catch (err) {
-    res.status(400).send(err);
+    res.status(400).send(err.message);
   }
 });
 
@@ -31,7 +31,7 @@ productRouter.post("/add", async (req, res) => {
     await product.save();
     res.status(200).send({ msg: "product posted" });
   } catch (err) {
-    res.status(400).send({ msg: "something went wrong" });
+    res.status(400).send({ msg: "something went wrong", err: err.message });
   }
 });
 

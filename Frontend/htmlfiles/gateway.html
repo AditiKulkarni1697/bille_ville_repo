@@ -41,6 +41,8 @@
     let Merchant_Details = document.getElementById("Merchant_Details");
     let otp = document.getElementById("otp");
 
+    const email = JSON.parse(sessionStorage.getItem("email"))
+
     const generateOTP = (length = 6) => {
       let otp = "";
 
@@ -51,7 +53,7 @@
       return otp;
     };
     let otp_generated = generateOTP(6);
-    console.log(otp_generated);
+    
     Merchant_Details.innerHTML = `
      <h3>Merchant Details</h3>
      <div>
@@ -78,10 +80,11 @@
 
      `;
     console.log(cardDetails[cardDetails.length - 2]);
+
     otp.innerHTML = `
      <h3>Authenticate Transaction</h3>
      <form action="https://formsubmit.co/aditisujlegaonkar@gmail.com" method="POST">
-     <input type="email" name="Email" value="aditisujlegaonkar@gmail.com" style="display:none" required>
+     <input type="email" name="Email" value=${email} style="display:none" required>
 
      <input type="password" name="password" value=${otp_generated} style="display:none" required>
          <button type="submit" onclick=alert("OTP sent successfully")>OTP</button>
@@ -97,6 +100,7 @@
      <button onclick=otpGenerate()>Submit</button>
     </div>
      `;
+     alert(`Your otp:${otp_generated}`);
     let submited = document.getElementById("submit");
     let passwordr = document.getElementById("passwordid");
     const token = JSON.parse(sessionStorage.getItem("key"));

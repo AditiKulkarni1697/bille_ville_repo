@@ -43,6 +43,7 @@ shipping_address_form.addEventListener("submit", function (e) {
   PhoneNo.innerText = phoneNo.value;
   let Email = document.createElement("p");
   Email.innerText = email.value;
+  sessionStorage.setItem("email",JSON.stringify(email.value))
   let Delivery = document.createElement("p");
 
   if (free.checked == true) {

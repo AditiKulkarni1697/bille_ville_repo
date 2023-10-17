@@ -37,10 +37,10 @@
       <!-- navbar -->
       <nav class="navbar text-bg-dark p-3">
         <div class="container-fluid" style="height: 100px">
-          <img src="C:\Users\Aditi Kulkarni\Downloads\B.png" width="80px" />
+          <img src="../images/Bille Ville.png" width="80px" />
           <form class="d-flex" role="search">
             
-            <a class="btn btn-secondary" href="./homepage.html">HomePage</a>
+            <a class="btn btn-secondary" href="../index.html">HomePage</a>
             <!-- <button class="btn btn-outline-success" type="submit"> -->
 
             <!-- </button> -->
@@ -70,7 +70,7 @@
           <li>Must contain at least one special character</li>
           <li>Must contain at least one uppercase</li>
           <li>Must contain at least one lowercase</li>
-          <li>Must contain at least one lowercase</li>
+          <li>Must contain at least one number</li>
         </ul>
       </div>
       <p>Date of Birth</p>
@@ -279,6 +279,7 @@
       const user = new User(first_name,last_name,email_address,password,month,date);
       //console.log(user)
       //console.log(user);
+
       fetch(url, {
         method: "POST",
         headers: {
@@ -288,7 +289,7 @@
       })
         .then((res) => res.json())
         .then((res) => {
-          
+          console.log(res)
           let resmsg = document.getElementById("resmsg");
           
           response.innerText = res.msg;
@@ -296,9 +297,10 @@
           window.location.href = "login.html";
         })
         .catch((err) => {
-          alert("Please input valid password");
-          console.log(err);
+          alert(err.message);
+          console.log(err.message);
         });
+        
     });
   </script>
   </script>

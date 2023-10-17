@@ -28,12 +28,12 @@
       <!-- navbar -->
       <nav class="navbar text-bg-dark p-3">
         <div class="container-fluid" style="height: 100px">
-          <img src="C:\Users\Aditi Kulkarni\Downloads\B.png" width="80px" />
+          <img src="../images/Bille Ville.png" width="80px" />
           <form class="d-flex" role="search">
             <h4 id="userName"></h4>
             <!-- <a class="btn btn-secondary" href="./login.html">Login</a>
             <a class="btn btn-secondary" href="./signup.html">SignUp</a> -->
-            <a class="btn btn-secondary" href="./homepage.html">HomePage</a>
+            <a class="btn btn-secondary" href="../index.html">HomePage</a>
             <a class="btn btn-secondary" href="./cart.html">Cart</a>
             <a class="btn btn-secondary" href="./userAccount.html">Account</a>
             
@@ -358,9 +358,11 @@
           })
             .then((res) => res.json())
             .then((res) => {
-              window.location.href = "cart.html";
+              console.log(res)
+              alert("product added to cart")
+             // window.location.href = "cart.html";
             })
-            .catch((err) => console.log(err));
+            .catch((err) => console.log(err,"err"));
         });
         //////////////////////add reviews here, when reviews are created fron user account feed back form ///////////
       });

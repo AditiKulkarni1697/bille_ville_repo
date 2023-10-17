@@ -13,6 +13,7 @@ const auth = async (req, res, next) => {
       if (decoded) {
         next();
       } else {
+        console.log("err");
         res.send(err);
       }
     });

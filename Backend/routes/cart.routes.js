@@ -20,7 +20,7 @@ cartRouter.get("/", auth, async (req, res) => {
 });
 
 cartRouter.post("/add", auth, async (req, res) => {
-  console.log(req.body);
+  console.log(req.body), "cart route post";
   const payload = req.body;
   const token = req.headers.authorization;
   const decoded = jwt.verify(token, "bruce");
@@ -32,7 +32,7 @@ cartRouter.post("/add", auth, async (req, res) => {
     await product.save();
     res.status(200).send({ msg: "product added to cart" });
   } catch (err) {
-    res.status(400).send(err);
+    res.status(400).send(err.message);
   }
 });
 

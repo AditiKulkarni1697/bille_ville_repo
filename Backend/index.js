@@ -9,7 +9,17 @@ const { orderRouter } = require("./routes/order.routes");
 const { blacklistRouter } = require("./routes/blacklist.routes");
 const app = express();
 app.use(express.json());
-app.use(cors());
+app.options('*', cors())
+
+app.use((req, res, next) => {
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header(
+      "Access-Control-Allow-Headers",
+      "Origin, X-Requested-With, Content-Type, Accept"
+    );
+    next();
+  });
 app.get("/", (req, res) => {
   res.send("Welcome to index page");
 });

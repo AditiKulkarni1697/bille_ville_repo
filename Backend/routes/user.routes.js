@@ -35,15 +35,20 @@ userRouter.post("/register", passwordRegulate, async (req, res) => {
     req.body;
   bcrypt.hash(password, 8, async function (err, hash) {
     if (hash) {
-      const user = new UserModel({
-        first_name,
-        last_name,
-        email_address,
-        password: hash,
-        date_of_birth,
-      });
-      await user.save();
-      res.status(200).send({ msg: "User is created" });
+      try {
+        const user = new UserModel({
+          first_name,
+          last_name,
+          email_address,
+          password: hash,
+          date_of_birth,
+        });
+        await user.save();
+        res.status(200).send({ msg: "User is created" });
+      }
+      catch (err) {
+        res.status(400).send({ msg: "Something went wrong. Please try again.", err: err.message });
+      }
     } else {
       res.status(400).send({ msg: "Something went wrong. Please try again." });
     }
@@ -54,22 +59,32 @@ userRouter.post("/register", passwordRegulate, async (req, res) => {
 
 userRouter.post("/login", async (req, res) => {
   const { email_address, password } = req.body;
+  try {
+    const user = await UserModel.find({ email_address: email_address });
+    bcrypt.compare(password, user[0].password, function (err, result) {
+      if (result) {
+        try {
+          const token = jwt.sign(
+            { userID: user[0]._id, name: user[0].first_name }, //check decoded for userID and name
+            "bruce"
+          );
 
-  const user = await UserModel.find({ email_address: email_address });
-
-  bcrypt.compare(password, user[0].password, function (err, result) {
-    if (result) {
-      const token = jwt.sign(
-        { userID: user[0]._id, name: user[0].first_name }, //check decoded for userID and name
-        "bruce"
-      );
-
-      res
-        .status(200)
-        .send({ msg: "User logged in", token: token, userID: user[0]._id });
-    } else {
-      res.status(400).send({ msg: "Wrong credentials" });
+          res
+            .status(200)
+            .json({ msg: "User logged in", token: token, userID: user[0]._id });
+        }
+        catch (err) {
+          res.status(400).json({ msg: "Wrong credentials", err: err.message });
+        }
+      } else {
+        res.status(400).json({ msg: "Wrong credentials" });
+      }
+    })
+  }
+  catch (err) {
+      res.json(err.message)
     }
+
   });
-});
+
 module.exports = { userRouter };

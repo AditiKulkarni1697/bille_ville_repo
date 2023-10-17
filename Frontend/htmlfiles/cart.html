@@ -20,6 +20,11 @@
       #cont {
         margin: auto;
       }
+      #container{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr ;
+      }
+
     </style>
   </head>
   <body>
@@ -28,12 +33,12 @@
       <!-- navbar -->
       <nav class="navbar text-bg-dark p-3">
         <div class="container-fluid" style="height: 100px">
-          <img src="C:\Users\Aditi Kulkarni\Downloads\B.png" width="80px" />
+          <img src="../images/Bille Ville.png" width="80px" />
           <form class="d-flex" role="search">
             <h4 id="userName"></h4>
             <!-- <a class="btn btn-secondary" href="./login.html">Login</a>
             <a class="btn btn-secondary" href="./signup.html">SignUp</a> -->
-            <a class="btn btn-secondary" href="./homepage.html">HomePage</a>
+            <a class="btn btn-secondary" href="../index.html">HomePage</a>
             <a class="btn btn-secondary" href="./userAccount.html">Account</a>
             <!-- <button class="btn btn-outline-success" type="submit"> -->
 
@@ -178,28 +183,40 @@
     })
       .then((res) => res.json())
       .then((res) => {
-        console.log(res);
+          console.log(res)
+          display(res)
+          billCard()
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+        
         const cont = document.getElementById("cont");
         const bill = document.getElementById("bill");
         /////////////////////items///////////////////////////
         const container = document.createElement("div");
+        container.setAttribute("id","container")
         container.className = "container text-center";
         let total = 0;
         let items = 0;
         // sessionStorage.setItem("total", total)
-        const row = document.createElement("div");
-        row.className = "row row-cols-1 row-cols-sm-2 row-cols-md-4";
+       // const row = document.createElement("div");
+       // row.className = "row row-cols-1 row-cols-sm-2 row-cols-md-4";
         ////////////////////individual item///////////////////////
-        function display() {
+        function display(data) {
           container.innerHTML = "";
           total = 0;
           sessionStorage.setItem("total", total);
 
           items = 0;
           sessionStorage.setItem("items", items);
-          sessionStorage.setItem("cart", JSON.stringify(res));
-          res.forEach((ele) => {
+          sessionStorage.setItem("cart", JSON.stringify(data));
+          console.log(data,"data")
+          data.forEach((ele) => {
+           
             items++;
+            console.log(items,total)
             sessionStorage.setItem("items", items);
             const card = document.createElement("div");
             card.className = "card";
@@ -226,12 +243,13 @@
             cardText.innerHTML = "INR" + " " + ele.price;
             total += ele.price;
             sessionStorage.setItem("total", total);
+            
             const btn = document.createElement("button");
             btn.className = "btn btn-danger";
             btn.innerHTML = "DELETE";
             btn.addEventListener("click", (e) => {
               e.preventDefault();
-              fetch(`https://bille-ville-backend.onrender.com/${ele._id}`, {
+              fetch(`https://bille-ville-backend.onrender.com/cart/delete/${ele._id}`, {
                 method: "DELETE",
                 headers: {
                   authorization: token,
@@ -239,7 +257,12 @@
               })
                 .then((res) => res.json())
                 .then((res) => {
-                  display();
+                  items--
+                  sessionStorage.setItem("items", items);
+                  total -= ele.price
+                  sessionStorage.setItem("total",total)
+                  //total()
+                  window.location.reload()
                 })
                 .catch((err) => console.log(err));
             });
@@ -251,31 +274,46 @@
 
             card.appendChild(img);
             card.appendChild(cardBody);
-            row.appendChild(card);
+            // row.appendChild(card);
+            container.appendChild(card);
+
           });
         }
-        display();
+        //display();
         ///////////////////////////////////////////////////////////////
-        container.appendChild(row);
-
+        
         /////////////bill//////////////
+
         const card = document.createElement("div");
         card.className = "card";
         card.style.width = "18rem";
+        
+        function billCard(){
+        card.innerHTML = ""
 
         const cardBody = document.createElement("div");
         cardBody.className = "card-body";
 
         const cardTitle = document.createElement("h5");
         cardTitle.className = "card-title";
-        cardTitle.textContent = "SubTotal:" + " " + "INR" + " " + total;
 
         const cardSubtitle = document.createElement("h6");
         cardSubtitle.className = "card-subtitle mb-2 text-body-secondary";
-        cardSubtitle.textContent = "Items:" + " " + items;
 
         const cardText = document.createElement("p");
         cardText.className = "card-text";
+
+        
+        let SubTotal = sessionStorage.getItem("total");
+        cardTitle.textContent = "SubTotal:" + " " + "INR" + " " + SubTotal;
+
+        
+        let item_count = sessionStorage.getItem("items");
+        cardSubtitle.textContent = "Items:" + " " + item_count;
+
+        console.log(SubTotal,item_count)
+
+        
         cardText.textContent = "Taxes:" + " " + "INR" + " " + "25";
 
         const cardText1 = document.createElement("p");
@@ -284,13 +322,21 @@
 
         const cardTitle2 = document.createElement("h5");
         cardTitle2.className = "card-title";
+        if(item_count>0){
+           console.log(item_count)
         cardTitle2.textContent =
-          "Total:" + " " + "INR" + " " + (total + 25 - 500);
-
+          "Total:" + " " + "INR" + " " + (+SubTotal + 25 - 500);
+        }
+        else{
+          cardTitle2.textContent =
+          "Total:" + " " + "INR" + " " + (SubTotal);
+        }
+      
+      
         const cardBack = document.createElement("a");
         cardBack.className = "btn btn-primary";
         cardBack.innerHTML = "BACK";
-        cardBack.setAttribute("href", "homepage.html");
+        cardBack.setAttribute("href", "../index.html");
 
         const cardPay = document.createElement("button");
         cardPay.className = "btn btn-success";
@@ -308,13 +354,12 @@
         cardBody.appendChild(cardPay);
 
         card.appendChild(cardBody);
-
+      }
+      billCard()
         ////////////////////////////////////////////
         cont.appendChild(container);
         bill.appendChild(card);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+      
+      
   </script>
 </html>
